@@ -17,10 +17,10 @@ class bookList2(APIView):
         certain_book = Cache.objects.all().filter(bookid=id)
         if certain_book:
             Cache.objects.filter(bookid=id).delete()
-            return Response("SUCCESS")
+            return Response("SUCCESS Remove")
         return Response("No such book to remove")
 
     def post(self, request, id):
-        b = Cache(bookid= id, title= request.data["title"] , quantity= request.data["quantity"] , price= request.data["price"] , topic= request.data["topic"])
+        b = Cache(bookid= id, title= request.data["title"] , quantity= request.data["quantity"] , price= request.data["price"] )
         b.save()
         return Response("SUCCESS SAVE")
